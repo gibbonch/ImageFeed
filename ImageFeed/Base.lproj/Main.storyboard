@@ -50,12 +50,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4m-9j-WL8">
-                                                    <rect key="frame" x="332" y="4" width="42" height="44"/>
+                                                    <rect key="frame" x="332" y="4" width="42" height="42"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="jGB-vd-Cb0"/>
+                                                        <constraint firstAttribute="height" constant="42" id="jGB-vd-Cb0"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="non-active-like"/>
+                                                    <connections>
+                                                        <action selector="likeButtonTapped:" destination="aOs-CE-ObG" eventType="touchUpInside" id="CIa-ft-N2L"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" name="Black-YP"/>

@@ -20,4 +20,19 @@ final class ImagesListCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
+    // MARK: - Actions
+    
+    @IBAction func likeButtonTapped(_ sender: Any) {
+        guard let buttonImage = likeButton.imageView?.image else {
+            return
+        }
+        
+        let isLiked = buttonImage == UIImage.activeLike
+        if isLiked {
+            likeButton.setImage(UIImage.nonActiveLike, for: .normal)
+        } else {
+            likeButton.setImage(UIImage.activeLike, for: .normal)
+        }
+    }
+    
 }
