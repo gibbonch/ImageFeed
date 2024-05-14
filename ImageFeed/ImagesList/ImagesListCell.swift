@@ -20,19 +20,19 @@ final class ImagesListCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    // MARK: - Actions
+    // MARK: - Lifecycle
     
-    @IBAction func likeButtonTapped(_ sender: Any) {
-        guard let buttonImage = likeButton.imageView?.image else {
-            return
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        let isLiked = buttonImage == UIImage.activeLike
-        if isLiked {
-            likeButton.setImage(UIImage.nonActiveLike, for: .normal)
-        } else {
-            likeButton.setImage(UIImage.activeLike, for: .normal)
-        }
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = gradientView.bounds
+        gradientLayer.colors = [
+            UIColor.clear.cgColor,
+            UIColor.gradientYP.withAlphaComponent(0.2).cgColor
+        ]
+        
+        gradientView.layer.addSublayer(gradientLayer)
     }
     
 }
