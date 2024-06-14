@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wva-6p-GyZ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -56,6 +56,10 @@
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="non-active-like-icon"/>
+                                                    <connections>
+                                                        <action selector="didLikeButtonTap:" destination="aOs-CE-ObG" eventType="touchUpInside" id="kMD-sm-sNv"/>
+                                                        <action selector="likeButtonDidTap:" destination="aOs-CE-ObG" eventType="touchUpInside" id="6VK-SY-i0O"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" name="black-app"/>
@@ -147,6 +151,9 @@
                                 <rect key="frame" x="321" y="109" width="48" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="logout-icon"/>
+                                <connections>
+                                    <action selector="logoutButtonDidTap:" destination="wva-6p-GyZ" eventType="touchUpInside" id="HON-HX-Bv1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c1Z-3J-Ui8"/>
@@ -159,6 +166,12 @@
                             <constraint firstItem="e24-e4-HdB" firstAttribute="leading" secondItem="c1Z-3J-Ui8" secondAttribute="leading" constant="16" id="keC-9O-4dt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="ogf-po-LVO" id="AzR-P1-pLP"/>
+                        <outlet property="nicknameLabel" destination="6dV-Zx-egP" id="5Uo-Ky-5wZ"/>
+                        <outlet property="profileImageView" destination="AXy-qb-Mjj" id="s5J-aL-y4M"/>
+                        <outlet property="usernameLabel" destination="gy7-Fo-7QV" id="45X-Mg-0cO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Puz-fo-54j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

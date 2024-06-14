@@ -35,4 +35,8 @@ final class ImagesListCell: UITableViewCell {
         gradientView.layer.addSublayer(gradientLayer)
     }
     
+    // MARK: - Actions
+    
+    @IBAction func likeButtonDidTap(_ sender: Any) { }
+    
 }
