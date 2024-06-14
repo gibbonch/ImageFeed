@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wva-6p-GyZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DKi-Tx-tlw">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,6 +9,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Cv3-Vi-nOf">
+            <objects>
+                <tabBarController id="DKi-Tx-tlw" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="36d-mU-sE3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="black-app"/>
+                        </tabBarAppearance>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="cRd-El-bZA"/>
+                        <segue destination="wva-6p-GyZ" kind="relationship" relationship="viewControllers" id="hqe-4X-YeA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Im4-no-oWj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1505" y="150"/>
+        </scene>
         <!--ImageList-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -101,13 +123,14 @@
                             <constraint firstItem="cVj-JF-Eeu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aYO-rC-LQe"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="tab_editorial_active" id="4hG-oi-tgg"/>
                     <connections>
                         <outlet property="tableView" destination="cVj-JF-Eeu" id="7X6-0p-B7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.13043478260872" y="-2.6785714285714284"/>
+            <point key="canvasLocation" x="-479" y="-254"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="lem-AU-th9">
@@ -174,6 +197,7 @@
                             <constraint firstItem="e24-e4-HdB" firstAttribute="leading" secondItem="c1Z-3J-Ui8" secondAttribute="leading" constant="16" id="keC-9O-4dt"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="tab_profile_active" id="Hm8-R5-Jzt"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="ogf-po-LVO" id="AzR-P1-pLP"/>
                         <outlet property="nicknameLabel" destination="6dV-Zx-egP" id="5Uo-Ky-5wZ"/>
@@ -183,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Puz-fo-54j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013.8461538461538" y="2.8436018957345972"/>
+            <point key="canvasLocation" x="-480" y="395"/>
         </scene>
     </scenes>
     <resources>
@@ -191,6 +215,8 @@
         <image name="logout-icon" width="24" height="24"/>
         <image name="non-active-like-icon" width="42" height="42"/>
         <image name="profile-picture" width="70" height="70"/>
+        <image name="tab_editorial_active" width="30" height="30"/>
+        <image name="tab_profile_active" width="30" height="30"/>
         <namedColor name="Black-YP">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
