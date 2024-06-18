@@ -21,7 +21,7 @@ final class ImagesListViewController: UIViewController {
         return formatter
     }()
     
-    // MARK: - Outlets
+    // MARK: - UITableView
     
     @IBOutlet private var tableView: UITableView!
     
@@ -50,11 +50,7 @@ final class ImagesListViewController: UIViewController {
         }
     }
     
-}
-
-// MARK: - ImagesListViewController Methods
-
-extension ImagesListViewController {
+    // MARK: - Methods
     
     private func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
         guard let image = UIImage(named: photoNames[indexPath.row]) else {

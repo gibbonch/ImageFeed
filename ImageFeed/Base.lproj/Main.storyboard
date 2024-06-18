@@ -156,6 +156,24 @@
                                     <action selector="backwardButtonDidTap:" destination="iQK-Rs-on1" eventType="touchUpInside" id="miV-nm-DUt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyz-Wd-TKj">
+                                <rect key="frame" x="171.66666666666666" y="785" width="50" height="50"/>
+                                <color key="backgroundColor" name="black-app"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="HrM-FY-e6W"/>
+                                    <constraint firstAttribute="height" constant="50" id="hCc-TG-SfZ"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="sharing"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sharingButtonDidTap:" destination="iQK-Rs-on1" eventType="touchUpInside" id="6sz-Vl-FLa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mk6-KS-qvH"/>
                         <color key="backgroundColor" name="black-app"/>
@@ -163,10 +181,12 @@
                             <constraint firstItem="5ch-ki-Rmo" firstAttribute="top" secondItem="Mk6-KS-qvH" secondAttribute="top" constant="11" id="3py-kb-9EJ"/>
                             <constraint firstItem="D2a-KR-2fO" firstAttribute="top" secondItem="2wy-WP-YRo" secondAttribute="top" id="JXD-3C-taF"/>
                             <constraint firstItem="5ch-ki-Rmo" firstAttribute="leading" secondItem="Mk6-KS-qvH" secondAttribute="leading" constant="9" id="RC2-kw-7Zu"/>
+                            <constraint firstItem="Jyz-Wd-TKj" firstAttribute="centerX" secondItem="2wy-WP-YRo" secondAttribute="centerX" id="YiY-D0-rul"/>
                             <constraint firstAttribute="bottom" secondItem="D2a-KR-2fO" secondAttribute="bottom" id="bIN-0p-dTy"/>
                             <constraint firstItem="Mk6-KS-qvH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5ch-ki-Rmo" secondAttribute="trailing" symbolic="YES" id="d4t-XG-bRB"/>
                             <constraint firstItem="D2a-KR-2fO" firstAttribute="trailing" secondItem="2wy-WP-YRo" secondAttribute="trailing" id="k4a-cW-W3n"/>
                             <constraint firstItem="D2a-KR-2fO" firstAttribute="leading" secondItem="2wy-WP-YRo" secondAttribute="leading" id="rtf-WL-Caj"/>
+                            <constraint firstItem="Mk6-KS-qvH" firstAttribute="bottom" secondItem="Jyz-Wd-TKj" secondAttribute="bottom" constant="17" id="wpt-tC-bdK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d21-a5-Cm9"/>
@@ -286,6 +306,7 @@
         <image name="logout-icon" width="24" height="24"/>
         <image name="non-active-like-icon" width="42" height="42"/>
         <image name="profile-picture" width="70" height="70"/>
+        <image name="sharing" width="30" height="30"/>
         <image name="tab_editorial_active" width="30" height="30"/>
         <image name="tab_profile_active" width="30" height="30"/>
         <namedColor name="Black-YP">

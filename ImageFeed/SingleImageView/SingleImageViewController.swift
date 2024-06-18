@@ -18,7 +18,12 @@ final class SingleImageViewController: UIViewController {
         imageView.image = image
     }
     
+    // MARK: - Actions
+    
     @IBAction private func backwardButtonDidTap(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+    @IBAction func sharingButtonDidTap(_ sender: Any) { }
+    
 }
