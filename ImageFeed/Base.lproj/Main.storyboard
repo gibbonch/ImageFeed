@@ -142,16 +142,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-KR-2fO">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Vp-kE-Rn2">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-KR-2fO">
+                                        <rect key="frame" x="0.0" y="68" width="392" height="345"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="iQK-Rs-on1" id="JSK-WX-eAu"/>
+                                </connections>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-ki-Rmo">
-                                <rect key="frame" x="8.9999999999999964" y="11" width="52.666666666666657" height="24"/>
+                                <rect key="frame" x="9" y="11" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="QXO-I5-ylG"/>
+                                    <constraint firstAttribute="width" constant="24" id="qM2-ea-7Kw"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="backward" title=" "/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="backward"/>
                                 <connections>
                                     <action selector="backwardButtonDidTap:" destination="iQK-Rs-on1" eventType="touchUpInside" id="miV-nm-DUt"/>
                                 </connections>
@@ -179,19 +189,20 @@
                         <color key="backgroundColor" name="black-app"/>
                         <constraints>
                             <constraint firstItem="5ch-ki-Rmo" firstAttribute="top" secondItem="Mk6-KS-qvH" secondAttribute="top" constant="11" id="3py-kb-9EJ"/>
-                            <constraint firstItem="D2a-KR-2fO" firstAttribute="top" secondItem="2wy-WP-YRo" secondAttribute="top" id="JXD-3C-taF"/>
                             <constraint firstItem="5ch-ki-Rmo" firstAttribute="leading" secondItem="Mk6-KS-qvH" secondAttribute="leading" constant="9" id="RC2-kw-7Zu"/>
+                            <constraint firstAttribute="trailing" secondItem="3Vp-kE-Rn2" secondAttribute="trailing" id="WKK-ll-8Ov"/>
                             <constraint firstItem="Jyz-Wd-TKj" firstAttribute="centerX" secondItem="2wy-WP-YRo" secondAttribute="centerX" id="YiY-D0-rul"/>
-                            <constraint firstAttribute="bottom" secondItem="D2a-KR-2fO" secondAttribute="bottom" id="bIN-0p-dTy"/>
                             <constraint firstItem="Mk6-KS-qvH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5ch-ki-Rmo" secondAttribute="trailing" symbolic="YES" id="d4t-XG-bRB"/>
-                            <constraint firstItem="D2a-KR-2fO" firstAttribute="trailing" secondItem="2wy-WP-YRo" secondAttribute="trailing" id="k4a-cW-W3n"/>
-                            <constraint firstItem="D2a-KR-2fO" firstAttribute="leading" secondItem="2wy-WP-YRo" secondAttribute="leading" id="rtf-WL-Caj"/>
+                            <constraint firstItem="3Vp-kE-Rn2" firstAttribute="top" secondItem="2wy-WP-YRo" secondAttribute="top" id="ftY-sN-du2"/>
+                            <constraint firstAttribute="bottom" secondItem="3Vp-kE-Rn2" secondAttribute="bottom" id="jEz-XD-sD8"/>
+                            <constraint firstItem="3Vp-kE-Rn2" firstAttribute="leading" secondItem="2wy-WP-YRo" secondAttribute="leading" id="txJ-TQ-hge"/>
                             <constraint firstItem="Mk6-KS-qvH" firstAttribute="bottom" secondItem="Jyz-Wd-TKj" secondAttribute="bottom" constant="17" id="wpt-tC-bdK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d21-a5-Cm9"/>
                     <connections>
                         <outlet property="imageView" destination="D2a-KR-2fO" id="rUs-vk-ayD"/>
+                        <outlet property="scrollView" destination="3Vp-kE-Rn2" id="YEY-BJ-2yq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NkP-cQ-2Uv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
