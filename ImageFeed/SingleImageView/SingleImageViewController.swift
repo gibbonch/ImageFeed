@@ -64,9 +64,12 @@ final class SingleImageViewController: UIViewController {
     @IBAction private func backwardButtonDidTap(_ sender: Any) {
         dismiss(animated: true)
     }
-        
+    
     @IBAction func shareButtonDidTap(_ sender: Any) {
-        
+        guard let image else { return }
+        let activityViewController = UIActivityViewController(activityItems: [image],
+                                                              applicationActivities: nil)
+        present(activityViewController, animated: true)
     }
 }
 
