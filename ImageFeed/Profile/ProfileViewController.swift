@@ -79,7 +79,7 @@ final class ProfileViewController: UIViewController {
         setConstraints()
     }
     
-    // MARK: Layout Configuration
+    // MARK: - Layout Configuration
     
     private func setupView() {
         view.backgroundColor = .blackApp
@@ -108,8 +108,6 @@ final class ProfileViewController: UIViewController {
             logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24)
         ])
     }
-    
-
     
     // MARK: - Actions
     
