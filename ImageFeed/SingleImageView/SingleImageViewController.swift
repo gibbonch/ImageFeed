@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LinkPresentation
 
 final class SingleImageViewController: UIViewController {
     
@@ -59,18 +60,23 @@ final class SingleImageViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: false)
     }
     
+    func presentShareActivityView(withShareable shareable: ShareableImage) {
+        let activityVC = UIActivityViewController(activityItems: [shareable], applicationActivities: nil)
+        self.present(activityVC, animated: true)
+    }
+    
     // MARK: - Actions
     
     @IBAction private func backwardButtonDidTap(_ sender: Any) {
         dismiss(animated: true)
     }
     
-    @IBAction func shareButtonDidTap(_ sender: Any) {
+    @IBAction private func shareButtonDidTap(_ sender: Any) {
         guard let image else { return }
-        let activityViewController = UIActivityViewController(activityItems: [image],
-                                                              applicationActivities: nil)
-        present(activityViewController, animated: true)
+        let shareable = ShareableImage(image: image, title: "Поделиться изображением")
+        presentShareActivityView(withShareable: shareable)
     }
+    
 }
 
 // MARK: - UIScrollViewDelegate
