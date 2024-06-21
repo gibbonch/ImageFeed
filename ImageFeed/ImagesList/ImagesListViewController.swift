@@ -13,7 +13,7 @@ final class ImagesListViewController: UIViewController {
     
     private let singleImageSegueIdentifier = "ShowSingleImage"
     
-    private let photoNames: [String] = Array(0..<20).map { "\($0)" }
+    private let photoNames = Array(0..<20).map { "\($0)" }
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM yyyy"
@@ -37,13 +37,13 @@ final class ImagesListViewController: UIViewController {
         if segue.identifier == singleImageSegueIdentifier {
             guard
                 let viewController = segue.destination as? SingleImageViewController,
-                let indexPath = sender as? IndexPath 
+                let indexPath = sender as? IndexPath,
+                let image = UIImage(named: photoNames[indexPath.row])
             else {
                 assertionFailure("Invalid segue destination")
                 return
             }
             
-            let image = UIImage(named: photoNames[indexPath.row])
             viewController.image = image
         } else {
             super.prepare(for: segue, sender: sender)

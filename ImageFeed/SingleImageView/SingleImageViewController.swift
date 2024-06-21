@@ -30,7 +30,7 @@ final class SingleImageViewController: UIViewController {
     }
     
     private func setupScrollView() {
-        scrollView.minimumZoomScale = 0.2
+        scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
     }
     
@@ -42,25 +42,25 @@ final class SingleImageViewController: UIViewController {
     }
     
     private func rescaleAndCenterImageInScrollView() {
-        guard let imageSize = image?.size else { return }
-        let visibleRectSize = scrollView.bounds.size
+        guard let image else { return }
         
-        let hScale = visibleRectSize.width / imageSize.width
-        let vScale = visibleRectSize.height / imageSize.height
-        
-        let theoreticalScale = min(hScale, vScale)
         let minZoomScale = scrollView.minimumZoomScale
         let maxZoomScale = scrollView.maximumZoomScale
         
-        let scale = min(maxZoomScale, max(minZoomScale, theoreticalScale))
+        view.layoutIfNeeded()
+        
+        let visibleRectSize = scrollView.bounds.size
+        let imageSize = image.size
+        
+        let hScale = visibleRectSize.width / imageSize.width
+        let vScale = visibleRectSize.height / imageSize.height
+        let scale = min(maxZoomScale, max(minZoomScale, min(hScale, vScale)))
         
         scrollView.setZoomScale(scale, animated: false)
         scrollView.layoutIfNeeded()
-        
-        scrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: false)
     }
     
-    func presentShareActivityView(withShareable shareable: ShareableImage) {
+    private func presentShareActivityView(with shareable: ShareableImage) {
         let activityVC = UIActivityViewController(activityItems: [shareable], applicationActivities: nil)
         self.present(activityVC, animated: true)
     }
@@ -74,7 +74,7 @@ final class SingleImageViewController: UIViewController {
     @IBAction private func shareButtonDidTap(_ sender: Any) {
         guard let image else { return }
         let shareable = ShareableImage(image: image, title: "Поделиться изображением")
-        presentShareActivityView(withShareable: shareable)
+        presentShareActivityView(with: shareable)
     }
     
 }

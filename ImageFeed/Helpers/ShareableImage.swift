@@ -31,8 +31,8 @@ final class ShareableImage: NSObject, UIActivityItemSource {
         let metadata = LPLinkMetadata()
         metadata.iconProvider = NSItemProvider(object: image)
         metadata.title = title
-        let size = image.fileSize()
-        let type = image.fileType()
+        let size = image.imageSize
+        let type = image.imageType
         let subtitleString = "\(type.uppercased()) File · \(size)"
         metadata.originalURL = URL(fileURLWithPath: subtitleString)
         return metadata
