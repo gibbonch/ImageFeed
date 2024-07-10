@@ -45,8 +45,9 @@ final class ImagesListViewController: UIViewController {
         tableView.rowHeight = 200
     }
     
-    private func configureUI(for cell: ImagesListCell) { }
-
+    private func configureUI(for cell: ImagesListCell) {
+        return
+    }
 }
 
 // MARK: - UITableViewDataSource

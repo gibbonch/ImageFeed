@@ -14,6 +14,8 @@
 		18982EE02C3D8A1200149DEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18982EDF2C3D8A1200149DEE /* Assets.xcassets */; };
 		18982EE32C3D8A1200149DEE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 18982EE22C3D8A1200149DEE /* Base */; };
 		18982F0B2C3EA7E600149DEE /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F0A2C3EA7E600149DEE /* ImagesListCell.swift */; };
+		18982F122C3ED6D800149DEE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F112C3ED6D800149DEE /* UIColor+Extension.swift */; };
+		18982F142C3ED6E600149DEE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F132C3ED6E600149DEE /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		18982EE22C3D8A1200149DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18982EE42C3D8A1200149DEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18982F0A2C3EA7E600149DEE /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
+		18982F112C3ED6D800149DEE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		18982F132C3ED6E600149DEE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,50 @@
 		18982ED52C3D8A1000149DEE /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				18982F0D2C3ED64B00149DEE /* Application */,
+				18982EDC2C3D8A1000149DEE /* Main.storyboard */,
+				18982F0E2C3ED65F00149DEE /* ImagesList */,
+				18982F102C3ED6B500149DEE /* Helpers */,
+				18982F0F2C3ED66F00149DEE /* Resources */,
+			);
+			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		18982F0D2C3ED64B00149DEE /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				18982ED62C3D8A1000149DEE /* AppDelegate.swift */,
 				18982ED82C3D8A1000149DEE /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		18982F0E2C3ED65F00149DEE /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
 				18982EDA2C3D8A1000149DEE /* ImagesListViewController.swift */,
 				18982F0A2C3EA7E600149DEE /* ImagesListCell.swift */,
-				18982EDC2C3D8A1000149DEE /* Main.storyboard */,
+			);
+			path = ImagesList;
+			sourceTree = "<group>";
+		};
+		18982F0F2C3ED66F00149DEE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				18982EDF2C3D8A1200149DEE /* Assets.xcassets */,
 				18982EE12C3D8A1200149DEE /* LaunchScreen.storyboard */,
 				18982EE42C3D8A1200149DEE /* Info.plist */,
 			);
-			path = ImageFeed;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		18982F102C3ED6B500149DEE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18982F112C3ED6D800149DEE /* UIColor+Extension.swift */,
+				18982F132C3ED6E600149DEE /* UIView+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18982F142C3ED6E600149DEE /* UIView+Extension.swift in Sources */,
 				18982EDB2C3D8A1000149DEE /* ImagesListViewController.swift in Sources */,
 				18982F0B2C3EA7E600149DEE /* ImagesListCell.swift in Sources */,
 				18982ED72C3D8A1000149DEE /* AppDelegate.swift in Sources */,
 				18982ED92C3D8A1000149DEE /* SceneDelegate.swift in Sources */,
+				18982F122C3ED6D800149DEE /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +338,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3UVVPY2T4W;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ImageFeed/Info.plist;
+				INFOPLIST_FILE = ImageFeed/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Image Feed";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -333,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3UVVPY2T4W;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ImageFeed/Info.plist;
+				INFOPLIST_FILE = ImageFeed/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Image Feed";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
