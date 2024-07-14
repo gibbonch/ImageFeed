@@ -8,34 +8,10 @@
 import UIKit
 
 
-// MARK: -
-// TODO: Move to services
-
-protocol ImageLoader {
-    func loadImages() -> [UIImage]
-}
-
-struct MockImageLoader: ImageLoader {
-    private let imageNames = Array(0..<20).map{ "\($0)" }
-    
-    func loadImages() -> [UIImage] {
-        var images = [UIImage]()
-        
-        for imageName in imageNames {
-            guard let image = UIImage(named: imageName) else {
-                return [UIImage]()
-            }
-            
-            images.append(image)
-        }
-        
-        return images
-    }
-}
-
-// MARK: -
 
 final class ImagesListViewController: UIViewController {
+    
+    // MARK: - Properties
     
     private var imageLoader = MockImageLoader()
     
@@ -51,13 +27,19 @@ final class ImagesListViewController: UIViewController {
         return formatter
     }()
     
+    // MARK: - UITableView
+    
     @IBOutlet private var tableView: UITableView!
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureTableView()
     }
+    
+    // MARK: - Methods
     
     private func configureTableView() {
         tableView.rowHeight = 200
