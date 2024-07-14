@@ -12,15 +12,21 @@ import UIKit
 // TODO: Move to services
 
 protocol ImageLoader {
-    func loadImages(for count: Int) -> [UIImage]
+    func loadImages() -> [UIImage]
 }
 
 struct MockImageLoader: ImageLoader {
-    func loadImages(for count: Int) -> [UIImage] {
+    private let imageNames = Array(0..<20).map{ "\($0)" }
+    
+    func loadImages() -> [UIImage] {
         var images = [UIImage]()
         
-        for i in 0..<count {
-            images.append(UIImage(named: "\(i)")!)
+        for imageName in imageNames {
+            guard let image = UIImage(named: imageName) else {
+                return [UIImage]()
+            }
+            
+            images.append(image)
         }
         
         return images
@@ -30,23 +36,41 @@ struct MockImageLoader: ImageLoader {
 // MARK: -
 
 final class ImagesListViewController: UIViewController {
-    private var imageLoader: ImageLoader?
+    
+    private var imageLoader = MockImageLoader()
+    
+    private lazy var images: [UIImage] = {
+        return imageLoader.loadImages()
+    }()
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        formatter.locale = Locale(identifier: "ru_RU")
+        return formatter
+    }()
     
     @IBOutlet private var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageLoader = MockImageLoader()
         configureTableView()
     }
     
     private func configureTableView() {
         tableView.rowHeight = 200
+        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
     
-    private func configureUI(for cell: ImagesListCell) {
-        return
+    private func configureUI(for cell: ImagesListCell, with indexPath: IndexPath) {
+        cell.cellImage.image = images[indexPath.row]
+        
+        let currentDate = Date()
+        cell.dateLabel.text = dateFormatter.string(from: currentDate)
+        
+        cell.isLiked = indexPath.row % 2 == 0
     }
 }
 
@@ -54,7 +78,7 @@ final class ImagesListViewController: UIViewController {
 
 extension ImagesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return images.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +88,7 @@ extension ImagesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        configureUI(for: imageListCell)
+        configureUI(for: imageListCell, with: indexPath)
         return imageListCell
     }
 }

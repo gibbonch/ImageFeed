@@ -37,24 +37,19 @@
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsV-D8-PVX">
                                                             <rect key="frame" x="0.0" y="132" width="358" height="30"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHj-fp-DGz">
-                                                                    <rect key="frame" x="8" y="4" width="102" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="18" id="N29-Jm-pGo"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="kHj-fp-DGz" firstAttribute="leading" secondItem="XsV-D8-PVX" secondAttribute="leading" constant="8" id="7Nl-xN-dKh"/>
-                                                                <constraint firstAttribute="bottom" secondItem="kHj-fp-DGz" secondAttribute="bottom" constant="8" id="AQj-gn-PY7"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kHj-fp-DGz" secondAttribute="trailing" constant="20" symbolic="YES" id="jcS-zo-sBv"/>
                                                                 <constraint firstAttribute="height" constant="30" id="xXT-gX-cVp"/>
                                                             </constraints>
                                                         </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHj-fp-DGz">
+                                                            <rect key="frame" x="8" y="136" width="102" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="N29-Jm-pGo"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHu-nX-fcx">
                                                             <rect key="frame" x="314" y="0.0" width="44" height="44"/>
                                                             <constraints>
@@ -75,10 +70,13 @@
                                                         <constraint firstAttribute="trailing" secondItem="kHu-nX-fcx" secondAttribute="trailing" id="BCM-g5-0jm"/>
                                                         <constraint firstItem="2xv-ny-mpa" firstAttribute="leading" secondItem="IPI-RT-Qfk" secondAttribute="leading" id="SV5-Lc-4mH"/>
                                                         <constraint firstAttribute="trailing" secondItem="2xv-ny-mpa" secondAttribute="trailing" id="Sil-Mk-cGT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="kHj-fp-DGz" secondAttribute="bottom" constant="8" id="fTw-pd-xyq"/>
                                                         <constraint firstAttribute="trailing" secondItem="XsV-D8-PVX" secondAttribute="trailing" id="hTR-4o-w1z"/>
                                                         <constraint firstAttribute="bottom" secondItem="2xv-ny-mpa" secondAttribute="bottom" id="ja2-Hq-kGJ"/>
                                                         <constraint firstItem="XsV-D8-PVX" firstAttribute="leading" secondItem="IPI-RT-Qfk" secondAttribute="leading" id="kze-Yn-znl"/>
                                                         <constraint firstAttribute="bottom" secondItem="XsV-D8-PVX" secondAttribute="bottom" id="paI-Cx-OtH"/>
+                                                        <constraint firstItem="kHj-fp-DGz" firstAttribute="leading" secondItem="IPI-RT-Qfk" secondAttribute="leading" constant="8" id="tpQ-O9-2Tn"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kHj-fp-DGz" secondAttribute="trailing" constant="20" symbolic="YES" id="tqC-CZ-5To"/>
                                                         <constraint firstItem="kHu-nX-fcx" firstAttribute="top" secondItem="IPI-RT-Qfk" secondAttribute="top" id="x5p-Sh-jVR"/>
                                                         <constraint firstItem="2xv-ny-mpa" firstAttribute="top" secondItem="IPI-RT-Qfk" secondAttribute="top" id="yin-gj-df0"/>
                                                     </constraints>
@@ -101,6 +99,7 @@
                                             <outlet property="cellImage" destination="2xv-ny-mpa" id="zMP-em-iib"/>
                                             <outlet property="dateLabel" destination="kHj-fp-DGz" id="fdt-QR-Y3G"/>
                                             <outlet property="gradientView" destination="XsV-D8-PVX" id="sZ9-ha-fpx"/>
+                                            <outlet property="likeButton" destination="kHu-nX-fcx" id="9ez-pN-fik"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
