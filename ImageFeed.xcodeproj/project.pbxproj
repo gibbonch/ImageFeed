@@ -18,6 +18,7 @@
 		18982F142C3ED6E600149DEE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F132C3ED6E600149DEE /* UIView+Extension.swift */; };
 		18982F1F2C44214100149DEE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F1E2C44214100149DEE /* ImageLoader.swift */; };
 		18982F212C44215B00149DEE /* MockImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F202C44215B00149DEE /* MockImageLoader.swift */; };
+		18DA3B6A2C49808300ED7D02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA3B692C49808300ED7D02 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		18982F132C3ED6E600149DEE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		18982F1E2C44214100149DEE /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		18982F202C44215B00149DEE /* MockImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageLoader.swift; sourceTree = "<group>"; };
+		18DA3B692C49808300ED7D02 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,9 @@
 			children = (
 				18982F0D2C3ED64B00149DEE /* Application */,
 				18982EDC2C3D8A1000149DEE /* Main.storyboard */,
-				18982F1D2C44212C00149DEE /* Services */,
 				18982F0E2C3ED65F00149DEE /* ImagesList */,
+				18DA3B682C49806600ED7D02 /* Profile */,
+				18982F1D2C44212C00149DEE /* Services */,
 				18982F102C3ED6B500149DEE /* Helpers */,
 				18982F0F2C3ED66F00149DEE /* Resources */,
 			);
@@ -120,6 +123,14 @@
 				18982F202C44215B00149DEE /* MockImageLoader.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		18DA3B682C49806600ED7D02 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18DA3B692C49808300ED7D02 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 				18982F0B2C3EA7E600149DEE /* ImagesListCell.swift in Sources */,
 				18982F212C44215B00149DEE /* MockImageLoader.swift in Sources */,
 				18982ED72C3D8A1000149DEE /* AppDelegate.swift in Sources */,
+				18DA3B6A2C49808300ED7D02 /* ProfileViewController.swift in Sources */,
 				18982ED92C3D8A1000149DEE /* SceneDelegate.swift in Sources */,
 				18982F122C3ED6D800149DEE /* UIColor+Extension.swift in Sources */,
 			);
