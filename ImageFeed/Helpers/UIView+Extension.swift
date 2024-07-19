@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+    
     func addGradient(with layer: CAGradientLayer, colors: [UIColor], locations: [Double]) {
         layer.frame = bounds
         layer.frame.origin = .zero
@@ -20,4 +21,5 @@ extension UIView {
         
         self.layer.insertSublayer(layer, above: self.layer)
     }
+    
 }

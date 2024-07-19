@@ -8,6 +8,7 @@
 import UIKit
 
 final class ImagesListCell: UITableViewCell {
+    
     static let cellIdentifier = "ImagesListCell"
     
     var isLiked = false {
@@ -41,4 +42,5 @@ final class ImagesListCell: UITableViewCell {
     @IBAction private func likeButtonDidTap(_ sender: Any) {
         isLiked.toggle()
     }
+    
 }
