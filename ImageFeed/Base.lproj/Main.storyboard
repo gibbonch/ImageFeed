@@ -225,9 +225,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-a9-pka">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwx-Ui-kz3">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-a9-pka">
+                                        <rect key="frame" x="0.0" y="0.0" width="1600" height="1059"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="TOh-a9-pka" firstAttribute="top" secondItem="dwx-Ui-kz3" secondAttribute="top" id="HX9-2C-Uzx"/>
+                                    <constraint firstItem="TOh-a9-pka" firstAttribute="leading" secondItem="dwx-Ui-kz3" secondAttribute="leading" id="Kdv-BI-64s"/>
+                                    <constraint firstAttribute="trailing" secondItem="TOh-a9-pka" secondAttribute="trailing" id="Unb-fN-b7y"/>
+                                    <constraint firstAttribute="bottom" secondItem="TOh-a9-pka" secondAttribute="bottom" id="kfD-Kn-s8M"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="MOl-NZ-Xn2"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="D2J-tq-8IV"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vkn-1g-Wks" id="jM9-z1-R5n"/>
+                                </connections>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-XP-u7i">
                                 <rect key="frame" x="9" y="9" width="24" height="24"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -240,21 +256,26 @@
                         <viewLayoutGuide key="safeArea" id="AQl-Az-M9Y"/>
                         <color key="backgroundColor" name="BlackApp"/>
                         <constraints>
-                            <constraint firstItem="AQl-Az-M9Y" firstAttribute="trailing" secondItem="TOh-a9-pka" secondAttribute="trailing" id="CSl-fl-QiV"/>
+                            <constraint firstItem="dwx-Ui-kz3" firstAttribute="bottom" secondItem="71l-oy-2Xb" secondAttribute="bottom" id="BXf-BN-hgD"/>
+                            <constraint firstItem="dwx-Ui-kz3" firstAttribute="leading" secondItem="71l-oy-2Xb" secondAttribute="leading" id="JCa-MV-MZU"/>
+                            <constraint firstItem="dwx-Ui-kz3" firstAttribute="top" secondItem="71l-oy-2Xb" secondAttribute="top" id="QgP-xZ-uMn"/>
                             <constraint firstItem="W5l-XP-u7i" firstAttribute="leading" secondItem="AQl-Az-M9Y" secondAttribute="leading" constant="9" id="WKm-qC-8Rw"/>
-                            <constraint firstItem="TOh-a9-pka" firstAttribute="top" secondItem="AQl-Az-M9Y" secondAttribute="top" id="X2V-Z1-O83"/>
-                            <constraint firstItem="AQl-Az-M9Y" firstAttribute="bottom" secondItem="TOh-a9-pka" secondAttribute="bottom" id="c1A-YZ-dnl"/>
+                            <constraint firstItem="dwx-Ui-kz3" firstAttribute="trailing" secondItem="71l-oy-2Xb" secondAttribute="trailing" id="aSt-1f-jWm"/>
                             <constraint firstItem="W5l-XP-u7i" firstAttribute="top" secondItem="AQl-Az-M9Y" secondAttribute="top" constant="9" id="lem-pD-iJN"/>
-                            <constraint firstItem="TOh-a9-pka" firstAttribute="leading" secondItem="AQl-Az-M9Y" secondAttribute="leading" id="olf-aK-h40"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="TOh-a9-pka" id="eWa-2Q-13H"/>
+                        <outlet property="imageViewBottomConstraint" destination="kfD-Kn-s8M" id="Bbp-zr-BdQ"/>
+                        <outlet property="imageViewLeadingConstraint" destination="Kdv-BI-64s" id="0e7-L1-0Fu"/>
+                        <outlet property="imageViewTopConstraint" destination="HX9-2C-Uzx" id="ALx-1T-KBO"/>
+                        <outlet property="imageViewTrailingConstraint" destination="Unb-fN-b7y" id="D0j-SL-gZX"/>
+                        <outlet property="scrollView" destination="dwx-Ui-kz3" id="OjI-mJ-rIn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6OO-Jg-N5N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="-292"/>
+            <point key="canvasLocation" x="272.30769230769232" y="-292.18009478672985"/>
         </scene>
     </scenes>
     <resources>
