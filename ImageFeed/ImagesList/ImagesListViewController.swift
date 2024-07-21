@@ -11,6 +11,10 @@ import UIKit
 
 final class ImagesListViewController: UIViewController {
     
+    // MARK: - UITableView
+    
+    @IBOutlet private var tableView: UITableView!
+    
     // MARK: - Properties
     
     private let segueIdentifier = "SingleImageSegue"
@@ -27,10 +31,6 @@ final class ImagesListViewController: UIViewController {
         formatter.locale = Locale(identifier: "ru_RU")
         return formatter
     }()
-    
-    // MARK: - UITableView
-    
-    @IBOutlet private var tableView: UITableView!
     
     // MARK: - Lifecycle
 

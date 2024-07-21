@@ -11,6 +11,13 @@ final class ImagesListCell: UITableViewCell {
     
     static let cellIdentifier = "ImagesListCell"
     
+    @IBOutlet weak var cellImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet private weak var gradientView: UIView!
+    @IBOutlet private weak var likeButton: UIButton!
+    
+    private let gradientLayer = CAGradientLayer()
+    
     var isLiked = false {
         didSet {
             if isLiked {
@@ -20,13 +27,6 @@ final class ImagesListCell: UITableViewCell {
             }
         }
     }
-    
-    @IBOutlet weak var cellImageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet private weak var gradientView: UIView!
-    @IBOutlet private weak var likeButton: UIButton!
-    
-    private let gradientLayer = CAGradientLayer()
     
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
