@@ -9,6 +9,8 @@ import UIKit
 
 final class SingleImageViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
     
@@ -17,13 +19,15 @@ final class SingleImageViewController: UIViewController {
     @IBOutlet private weak var imageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var imageViewTrailingConstraint: NSLayoutConstraint!
     
+    // MARK: - Image
+    
     var image: UIImage?
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureImageView()
-        
     }
     
     override func viewWillLayoutSubviews() {
@@ -31,9 +35,21 @@ final class SingleImageViewController: UIViewController {
         updateZoomScale(for: view.bounds.size)
     }
     
+    // MARK: - IBActions
+    
     @IBAction private func backwardButtonDidTap(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+    @IBAction private func shareButtonDidTap(_ sender: Any) {
+        guard let image else { return }
+        
+        let shareableImage = ShareableImage(image: image, title: "Поделиться изображением")
+        let activityViewContoller = UIActivityViewController(activityItems: [shareableImage], applicationActivities: nil)
+        present(activityViewContoller, animated: true)
+    }
+    
+    // MARK: - Methods
     
     private func configureImageView() {
         imageView.image = image
@@ -50,6 +66,8 @@ final class SingleImageViewController: UIViewController {
     
 }
 
+// MARK: - UIScrollViewDelegate
+
 extension SingleImageViewController: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -61,7 +79,7 @@ extension SingleImageViewController: UIScrollViewDelegate {
         updateConstraints(for: size)
     }
     
-    func updateConstraints(for size: CGSize) {
+    private func updateConstraints(for size: CGSize) {
         let yOffset = max(0, (size.height - imageView.frame.height) / 2)
         imageViewTopConstraint.constant = yOffset
         imageViewBottomConstraint.constant = yOffset
@@ -74,3 +92,4 @@ extension SingleImageViewController: UIScrollViewDelegate {
     }
     
 }
+

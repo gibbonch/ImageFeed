@@ -36,7 +36,6 @@ final class ImagesListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         imageLoader = MockImageLoader()
         configureTableView()
     }
