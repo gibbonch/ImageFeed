@@ -9,11 +9,103 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     
-    @IBOutlet private weak var avatarImageView: UIImageView!
-    @IBOutlet private var nameLabel: UILabel!
-    @IBOutlet private var loginNameLabel: UILabel!
-    @IBOutlet private var descriptionLabel: UILabel!
+    // MARK: - UI Components
     
-    @IBAction private func logoutButtonDidTap(_ sender: Any) { }
+    private lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 61
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 23, weight: .medium)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var loginNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = UIColor(rgb: 0xAEAFB4)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var logoutButton: UIButton = {
+        let button = UIButton()
+        button.setImage(.exit, for: .normal)
+        button.addTarget(nil, action: #selector(logoutButtonDidTap), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let mockModel = ProfileModel(avatarImageName: "UserAvatar",
+                                     name: "Екатерина Новикова",
+                                     loginName: "@ekaterina_nov",
+                                     description: "Hello, world!")
+        configureUI(with: mockModel)
+        
+        configureView()
+        setConstraints()
+    }
+    
+    // MARK: - Logout Action
+    
+    @objc private func logoutButtonDidTap() { }
+    
+    // MARK: - UI Configuration Methods
+    
+    private func configureView() {
+        view.backgroundColor = .blackApp
+        
+        view.addSubview(avatarImageView)
+        view.addSubview(nameLabel)
+        view.addSubview(loginNameLabel)
+        view.addSubview(descriptionLabel)
+        view.addSubview(logoutButton)
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            avatarImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            
+            loginNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            loginNameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            
+            logoutButton.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
+            logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24)
+            
+        ])
+    }
+    
+    private func configureUI(with model: ProfileModel) {
+        avatarImageView.image = UIImage(named: model.avatarImageName)
+        nameLabel.text = model.name
+        loginNameLabel.text = model.loginName
+        descriptionLabel.text = model.description
+    }
     
 }

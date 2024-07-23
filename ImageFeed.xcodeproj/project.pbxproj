@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181E56BE2C5002130059103A /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E56BD2C5002130059103A /* ProfileModel.swift */; };
 		187D56342C4EC901005680EB /* ShareableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D56332C4EC901005680EB /* ShareableImage.swift */; };
 		18982ED72C3D8A1000149DEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982ED62C3D8A1000149DEE /* AppDelegate.swift */; };
 		18982ED92C3D8A1000149DEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982ED82C3D8A1000149DEE /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181E56BD2C5002130059103A /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		187D56332C4EC901005680EB /* ShareableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableImage.swift; sourceTree = "<group>"; };
 		18982ED32C3D8A1000149DEE /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18982ED62C3D8A1000149DEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				18DA3B692C49808300ED7D02 /* ProfileViewController.swift */,
+				181E56BD2C5002130059103A /* ProfileModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				18982F1F2C44214100149DEE /* ImageLoader.swift in Sources */,
 				18982F142C3ED6E600149DEE /* UIView+Extension.swift in Sources */,
 				18982EDB2C3D8A1000149DEE /* ImagesListViewController.swift in Sources */,
+				181E56BE2C5002130059103A /* ProfileModel.swift in Sources */,
 				18982F0B2C3EA7E600149DEE /* ImagesListCell.swift in Sources */,
 				18982F212C44215B00149DEE /* MockImageLoader.swift in Sources */,
 				18982ED72C3D8A1000149DEE /* AppDelegate.swift in Sources */,
