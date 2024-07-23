@@ -8,6 +8,7 @@
 import UIKit
 
 struct MockImageLoader: ImageLoader {
+    
     private let imageNames = Array(0..<20).map{ "\($0)" }
     
     func loadImages() -> [UIImage] {
@@ -23,4 +24,5 @@ struct MockImageLoader: ImageLoader {
         
         return images
     }
+    
 }
