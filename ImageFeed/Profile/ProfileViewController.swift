@@ -55,7 +55,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mockModel = ProfileModel(avatarImageName: "UserAvatar",
+        let mockModel = Profile(avatarImageName: "UserAvatar",
                                      name: "Екатерина Новикова",
                                      loginName: "@ekaterina_nov",
                                      description: "Hello, world!")
@@ -101,7 +101,7 @@ final class ProfileViewController: UIViewController {
         ])
     }
     
-    private func configureUI(with model: ProfileModel) {
+    private func configureUI(with model: Profile) {
         avatarImageView.image = UIImage(named: model.avatarImageName)
         nameLabel.text = model.name
         loginNameLabel.text = model.loginName

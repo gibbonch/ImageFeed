@@ -1,5 +1,5 @@
 //
-//  ProfileModel.swift
+//  Profile.swift
 //  ImageFeed
 //
 //  Created by Александр Торопов on 23.07.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProfileModel {
+struct Profile {
     let avatarImageName: String
     let name: String
     let loginName: String
