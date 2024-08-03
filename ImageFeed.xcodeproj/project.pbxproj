@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180D72B02C5BE8640032C98F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180D72AF2C5BE8640032C98F /* AuthViewController.swift */; };
+		180D72B32C5BEA930032C98F /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180D72B22C5BEA930032C98F /* WebViewViewController.swift */; };
 		181E56BE2C5002130059103A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E56BD2C5002130059103A /* Profile.swift */; };
 		182FF53E2C57F3EF003CEB6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182FF53D2C57F3EF003CEB6E /* Constants.swift */; };
 		187D56342C4EC901005680EB /* ShareableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D56332C4EC901005680EB /* ShareableImage.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180D72AF2C5BE8640032C98F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		180D72B22C5BEA930032C98F /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		181E56BD2C5002130059103A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		182FF53D2C57F3EF003CEB6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		187D56332C4EC901005680EB /* ShareableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableImage.swift; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180D72AE2C5BE8470032C98F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				180D72AF2C5BE8640032C98F /* AuthViewController.swift */,
+				180D72B22C5BEA930032C98F /* WebViewViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		18982ECA2C3D8A1000149DEE = {
 			isa = PBXGroup;
 			children = (
@@ -78,9 +91,10 @@
 			children = (
 				18982F0D2C3ED64B00149DEE /* Application */,
 				18982EDC2C3D8A1000149DEE /* Main.storyboard */,
+				180D72AE2C5BE8470032C98F /* Auth */,
 				18982F0E2C3ED65F00149DEE /* ImagesList */,
-				18DA3B682C49806600ED7D02 /* Profile */,
 				18DA3B6D2C4AD4D900ED7D02 /* SingleImage */,
+				18DA3B682C49806600ED7D02 /* Profile */,
 				18982F1D2C44212C00149DEE /* Services */,
 				18982F102C3ED6B500149DEE /* Helpers */,
 				18982F0F2C3ED66F00149DEE /* Resources */,
@@ -234,6 +248,8 @@
 				182FF53E2C57F3EF003CEB6E /* Constants.swift in Sources */,
 				18DA3B6C2C4AD4D300ED7D02 /* SingleImageViewController.swift in Sources */,
 				187D56342C4EC901005680EB /* ShareableImage.swift in Sources */,
+				180D72B32C5BEA930032C98F /* WebViewViewController.swift in Sources */,
+				180D72B02C5BE8640032C98F /* AuthViewController.swift in Sources */,
 				18DA3B6A2C49808300ED7D02 /* ProfileViewController.swift in Sources */,
 				18982ED92C3D8A1000149DEE /* SceneDelegate.swift in Sources */,
 				18982F122C3ED6D800149DEE /* UIColor+Extension.swift in Sources */,
