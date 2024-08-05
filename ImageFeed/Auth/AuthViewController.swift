@@ -9,9 +9,18 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
+    private let oauthService = OAuth2Service.shared
+    private let oauthTokenStorage = OAuthTokenStorage()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackwardButton()
+        
+        print("Bearer token: \(oauthTokenStorage.token ?? "no_token")")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -20,6 +29,7 @@ final class AuthViewController: UIViewController {
                 return
             }
             
+            webViewViewController.view.setNeedsLayout()
             webViewViewController.delegate = self
         }
     }
@@ -36,6 +46,28 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewViewControllerDelegate {
     
     func webViewViewController(_ viewController: WebViewViewController, didAuthenticateWith code: String) {
+        
+        DispatchQueue.global().async { [weak self] in
+            self?.oauthService.fetchOAuthToken(with: code) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let decoder = JSONDecoder()
+                        let token = try decoder.decode(BearerTokenResponseBody.self, from: data).accessToken
+                        
+                        print("Bearer token recieved")
+                        self?.oauthTokenStorage.token = token
+                        
+                    } catch {
+                        print("Decoding error: \(error.localizedDescription)")
+                    }
+                case .failure(let error):
+                    print("error: \(error.localizedDescription)")
+                }
+            }
+            
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     

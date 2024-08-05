@@ -24,12 +24,18 @@ final class WebViewViewController: UIViewController {
     
     weak var delegate: WebViewViewControllerDelegate?
     
+    // MARK: - Status Bar
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureWebView()
-        loadAuthView()
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +46,7 @@ final class WebViewViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     // MARK: - Key Value Observer
@@ -66,6 +73,7 @@ final class WebViewViewController: UIViewController {
     
     private func configureWebView() {
         webView.navigationDelegate = self
+        loadAuthView()
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), context: nil)
     }
     
@@ -91,16 +99,22 @@ final class WebViewViewController: UIViewController {
 // MARK: - WKNavigationDelegate
 
 extension WebViewViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        updateProgress()
+    }
+    
     func webView(
         _ webView: WKWebView,
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
         if let code = code(from: navigationAction) {
-            decisionHandler(.cancel)
             print("Authorization code: \(code)")
+            decisionHandler(.cancel)
+            delegate?.webViewViewController(self, didAuthenticateWith: code)
         } else {
             decisionHandler(.allow)
+            updateProgress()
         }
     }
     

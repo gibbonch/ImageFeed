@@ -84,7 +84,7 @@
                             </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O22-j9-7sN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="O22-j9-7sN" firstAttribute="trailing" secondItem="Ywt-cI-iU4" secondAttribute="trailing" id="Eln-U7-dSN"/>
                             <constraint firstItem="c7t-NB-7ue" firstAttribute="top" secondItem="O22-j9-7sN" secondAttribute="top" id="Tbe-Lh-OcO"/>
@@ -345,14 +345,17 @@
             </objects>
             <point key="canvasLocation" x="1201.5384615384614" y="-292.18009478672985"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Auth Navigation Controller-->
         <scene sceneID="rET-Ss-1xW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EmM-we-yp6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EmM-we-yp6" customClass="AuthNavigationController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6YL-4e-Cob">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance" backgroundEffect="systemThinMaterial">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

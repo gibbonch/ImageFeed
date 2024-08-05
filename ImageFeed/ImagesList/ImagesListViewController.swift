@@ -18,7 +18,7 @@ final class ImagesListViewController: UIViewController {
     // MARK: - Properties
     
     private let segueIdentifier = "SingleImageSegue"
-    private var imageLoader: ImageLoader?
+    private var imageLoader: ImageLoading?
     
     private lazy var images: [UIImage] = {
         return imageLoader?.loadImages() ?? []
