@@ -1,5 +1,5 @@
 //
-//  BearerTokenResponseBody.swift
+//  OAuthTokenResponseBody.swift
 //  ImageFeed
 //
 //  Created by Александр Торопов on 05.08.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BearerTokenResponseBody: Decodable {
+struct OAuthTokenResponseBody: Decodable {
     let accessToken: String
     let tokenType: String
     let scope: String

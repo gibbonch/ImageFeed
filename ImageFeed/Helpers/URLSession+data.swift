@@ -11,14 +11,22 @@ enum NetworkError: Error {
     case httpStatusCode(Int)
     case urlRequestError(Error)
     case urlSessionError
+    
+    var localizedDescription: String {
+        switch self {
+        case .httpStatusCode(let code):
+            return NSLocalizedString("HTTP status code error: \(code)", comment: "NetworkError - HTTP status code")
+        case .urlRequestError(let error):
+            return NSLocalizedString("URL request error: \(error.localizedDescription)", comment: "NetworkError - URL request")
+        case .urlSessionError:
+            return NSLocalizedString("URL session error occurred", comment: "NetworkError - URL session")
+        }
+    }
+    
 }
 
 extension URLSession {
     func fetchData(for request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        print("Sleep")
-        sleep(5)
-        
         let performCompletion: (Result<Data, Error>) -> Void = { result in
             DispatchQueue.main.async {
                 completion(result)

@@ -24,7 +24,7 @@ final class WebViewViewController: UIViewController {
     
     weak var delegate: WebViewViewControllerDelegate?
     
-    // MARK: - Status Bar
+    // MARK: - StatusBar Appearance
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
@@ -56,7 +56,7 @@ final class WebViewViewController: UIViewController {
         of object: Any?,
         change: [NSKeyValueChangeKey : Any]?,
         context: UnsafeMutableRawPointer?
-    ) { 
+    ) {
         if keyPath == #keyPath(WKWebView.estimatedProgress) {
             updateProgress()
         } else {
@@ -99,6 +99,7 @@ final class WebViewViewController: UIViewController {
 // MARK: - WKNavigationDelegate
 
 extension WebViewViewController: WKNavigationDelegate {
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         updateProgress()
     }
@@ -109,7 +110,7 @@ extension WebViewViewController: WKNavigationDelegate {
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
         if let code = code(from: navigationAction) {
-            print("Authorization code: \(code)")
+            print("Authorization code recieved")
             decisionHandler(.cancel)
             delegate?.webViewViewController(self, didAuthenticateWith: code)
         } else {
@@ -131,4 +132,19 @@ extension WebViewViewController: WKNavigationDelegate {
         
         return codeItem.value
     }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        if(error.localizedDescription == "The Internet connection appears to be offline.")
+        {
+            print("Fail to load webView")
+            let alert = UIAlertController(title: "Ошибка подключения", message: "Проверьте ваше интернет-соединение и повторите попытку.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { ( _ ) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+        }
+    }
+    
 }

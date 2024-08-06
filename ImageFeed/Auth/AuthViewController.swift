@@ -9,18 +9,28 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
+    // MARK: - Services
+    
     private let oauthService = OAuth2Service.shared
-    private let oauthTokenStorage = OAuthTokenStorage()
+    private let oauthTokenStorage = OAuthTokenStorage.shared
+    
+    // MARK: - StatusBar Appearance
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackwardButton()
         
-        print("Bearer token: \(oauthTokenStorage.token ?? "no_token")")
+        if let _ = oauthTokenStorage.token {
+            print("Bearer token was detected in UserDefaults")
+        } else {
+            print("Bearer token was not detected in UserDefaults")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,6 +44,8 @@ final class AuthViewController: UIViewController {
         }
     }
     
+    // MARK: - UI Configuration
+    
     private func configureBackwardButton() {
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "DarkBackward")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "DarkBackward")
@@ -43,29 +55,32 @@ final class AuthViewController: UIViewController {
     
 }
 
+// MARK: - WebViewViewControllerDelegate
+
 extension AuthViewController: WebViewViewControllerDelegate {
     
     func webViewViewController(_ viewController: WebViewViewController, didAuthenticateWith code: String) {
         
-        DispatchQueue.global().async { [weak self] in
-            self?.oauthService.fetchOAuthToken(with: code) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    do {
-                        let decoder = JSONDecoder()
-                        let token = try decoder.decode(BearerTokenResponseBody.self, from: data).accessToken
-                        
-                        print("Bearer token recieved")
-                        self?.oauthTokenStorage.token = token
-                        
-                    } catch {
-                        print("Decoding error: \(error.localizedDescription)")
-                    }
-                case .failure(let error):
-                    print("error: \(error.localizedDescription)")
+        let fetchTokenCompletion: (Result<Data, Error>) -> Void = {  [weak self] result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let token = try decoder.decode(OAuthTokenResponseBody.self, from: data).accessToken
+                    
+                    print("Bearer token recieved")
+                    self?.oauthTokenStorage.token = token
+                    
+                } catch {
+                    print("Decoding error: \(error.localizedDescription)")
                 }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            
+        }
+        
+        DispatchQueue.global().async { [weak self] in
+            self?.oauthService.fetchOAuthToken(with: code, completion: fetchTokenCompletion)
         }
         
         navigationController?.popViewController(animated: true)

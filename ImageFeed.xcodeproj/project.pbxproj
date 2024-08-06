@@ -28,7 +28,7 @@
 		18F663DD2C5FF5120059D9F4 /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F663DC2C5FF5120059D9F4 /* OAuth2Service.swift */; };
 		18F663E12C610B7D0059D9F4 /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F663E02C610B7D0059D9F4 /* AuthNavigationController.swift */; };
 		18F663E32C611FEC0059D9F4 /* URLSession+data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F663E22C611FEC0059D9F4 /* URLSession+data.swift */; };
-		18F663E62C6126610059D9F4 /* BearerTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F663E52C6126610059D9F4 /* BearerTokenResponseBody.swift */; };
+		18F663E62C6126610059D9F4 /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F663E52C6126610059D9F4 /* OAuthTokenResponseBody.swift */; };
 		18F663E82C6139360059D9F4 /* OAuthTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F663E72C6139360059D9F4 /* OAuthTokenStorage.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +56,7 @@
 		18F663DC2C5FF5120059D9F4 /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
 		18F663E02C610B7D0059D9F4 /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
 		18F663E22C611FEC0059D9F4 /* URLSession+data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+data.swift"; sourceTree = "<group>"; };
-		18F663E52C6126610059D9F4 /* BearerTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearerTokenResponseBody.swift; sourceTree = "<group>"; };
+		18F663E52C6126610059D9F4 /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
 		18F663E72C6139360059D9F4 /* OAuthTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				18DA3B692C49808300ED7D02 /* ProfileViewController.swift */,
-				181E56BD2C5002130059103A /* Profile.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -185,7 +184,8 @@
 		18F663E42C6125E70059D9F4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				18F663E52C6126610059D9F4 /* BearerTokenResponseBody.swift */,
+				18F663E52C6126610059D9F4 /* OAuthTokenResponseBody.swift */,
+				181E56BD2C5002130059103A /* Profile.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 				180D72B32C5BEA930032C98F /* WebViewViewController.swift in Sources */,
 				180D72B02C5BE8640032C98F /* AuthViewController.swift in Sources */,
 				18DA3B6A2C49808300ED7D02 /* ProfileViewController.swift in Sources */,
-				18F663E62C6126610059D9F4 /* BearerTokenResponseBody.swift in Sources */,
+				18F663E62C6126610059D9F4 /* OAuthTokenResponseBody.swift in Sources */,
 				18F663E12C610B7D0059D9F4 /* AuthNavigationController.swift in Sources */,
 				18982ED92C3D8A1000149DEE /* SceneDelegate.swift in Sources */,
 				18982F122C3ED6D800149DEE /* UIColor+Extension.swift in Sources */,

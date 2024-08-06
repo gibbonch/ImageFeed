@@ -14,14 +14,14 @@ final class OAuth2Service {
     private init() { }
     
     func fetchOAuthToken(with code: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let request = makeBearerTokenRequest(with: code) else {
+        guard let request = prepareOAuthTokenRequest(with: code) else {
             return
         }
         
         URLSession.shared.fetchData(for: request, completion: completion)
     }
     
-    private func makeBearerTokenRequest(with code: String) -> URLRequest? {
+    private func prepareOAuthTokenRequest(with code: String) -> URLRequest? {
         var urlComponents = URLComponents(string: Constants.unsplashBearerTokenURL)
         urlComponents?.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.accessKey),

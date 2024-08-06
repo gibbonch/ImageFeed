@@ -9,6 +9,10 @@ import Foundation
 
 final class OAuthTokenStorage {
     
+    static let shared = OAuthTokenStorage()
+    
+    private init() { }
+    
     var token: String? {
         get {
             let defaults = UserDefaults.standard
