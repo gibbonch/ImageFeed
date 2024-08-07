@@ -13,7 +13,7 @@ final class OAuth2Service {
     
     private init() { }
     
-    func fetchOAuthToken(with code: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchAuthToken(with code: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = prepareOAuthTokenRequest(with: code) else {
             print("Fail to prepare bearer token request")
             return

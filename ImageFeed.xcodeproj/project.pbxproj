@@ -107,7 +107,6 @@
 				18982F0E2C3ED65F00149DEE /* ImagesList */,
 				18DA3B6D2C4AD4D900ED7D02 /* SingleImage */,
 				18DA3B682C49806600ED7D02 /* Profile */,
-				18C688FC2C63E9E800EF571B /* View */,
 				18982F1D2C44212C00149DEE /* Services */,
 				18F663E42C6125E70059D9F4 /* Domain */,
 				18982F102C3ED6B500149DEE /* Helpers */,
@@ -179,13 +178,6 @@
 				18F663E72C6139360059D9F4 /* OAuth2TokenStorage.swift */,
 			);
 			path = OAuth2;
-			sourceTree = "<group>";
-		};
-		18C688FC2C63E9E800EF571B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		18DA3B682C49806600ED7D02 /* Profile */ = {

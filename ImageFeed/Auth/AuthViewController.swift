@@ -13,6 +13,15 @@ protocol AuthViewControllerDelegate: AnyObject {
 
 final class AuthViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var indicatorBackgroundView: UIView!
+    
+    // MARK: - AuthViewControllerDelegate
+    
     weak var delegate: AuthViewControllerDelegate?
     
     // MARK: - Services
@@ -54,6 +63,14 @@ final class AuthViewController: UIViewController {
         navigationItem.backBarButtonItem?.tintColor = .blackApp
     }
     
+    private func showActivityIndicator() {
+        activityIndicatorView.isHidden = false
+        indicatorBackgroundView.isHidden = false
+        logoImageView.alpha = 0.75
+        loginButton.alpha = 0.75
+        loginButton.isEnabled = false
+    }
+    
 }
 
 // MARK: - WebViewViewControllerDelegate
@@ -61,7 +78,6 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewViewControllerDelegate {
     
     func webViewViewController(_ viewController: WebViewViewController, didAuthenticateWith code: String) {
-        
         let fetchTokenCompletion: (Result<Data, Error>) -> Void = { result in
             switch result {
             case .success(let data):
@@ -94,9 +110,9 @@ extension AuthViewController: WebViewViewControllerDelegate {
         }
         
         DispatchQueue.global().async { [weak self] in
-            self?.oauthService.fetchOAuthToken(with: code, completion: fetchTokenCompletion)
+            self?.oauthService.fetchAuthToken(with: code, completion: fetchTokenCompletion)
         }
-        
+        showActivityIndicator()
         navigationController?.popViewController(animated: true)
     }
     

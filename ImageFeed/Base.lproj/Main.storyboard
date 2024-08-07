@@ -45,22 +45,55 @@
                                     <constraint firstAttribute="height" constant="60" id="bgr-Z6-tIY"/>
                                 </constraints>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-9y-YNp">
+                                <rect key="frame" x="169.66666666666666" y="396.66666666666669" width="51" height="51"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="enD-bc-0gc">
+                                        <rect key="frame" x="13" y="13" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="N5I-vm-zAB"/>
+                                            <constraint firstAttribute="width" constant="25" id="PJd-3d-C0w"/>
+                                        </constraints>
+                                        <color key="color" name="BlackApp"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="AJL-Qx-QwB"/>
+                                    <constraint firstAttribute="height" constant="51" id="Evj-zf-L4w"/>
+                                    <constraint firstItem="enD-bc-0gc" firstAttribute="centerY" secondItem="V2T-9y-YNp" secondAttribute="centerY" id="TCh-wi-aER"/>
+                                    <constraint firstItem="enD-bc-0gc" firstAttribute="centerX" secondItem="V2T-9y-YNp" secondAttribute="centerX" id="r01-zB-G2w"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3vq-D2-3e8"/>
                         <color key="backgroundColor" name="BlackApp"/>
                         <constraints>
                             <constraint firstItem="RmC-By-gnV" firstAttribute="leading" secondItem="3vq-D2-3e8" secondAttribute="leading" constant="16" id="D4Q-8B-RS6"/>
+                            <constraint firstItem="V2T-9y-YNp" firstAttribute="centerX" secondItem="emU-2u-Hdv" secondAttribute="centerX" id="ILf-5K-C3g"/>
                             <constraint firstItem="3vq-D2-3e8" firstAttribute="bottom" secondItem="RmC-By-gnV" secondAttribute="bottom" constant="90" id="Z20-6n-p6c"/>
                             <constraint firstItem="3vq-D2-3e8" firstAttribute="trailing" secondItem="RmC-By-gnV" secondAttribute="trailing" constant="16" id="bgD-Bk-1fi"/>
+                            <constraint firstItem="V2T-9y-YNp" firstAttribute="centerY" secondItem="emU-2u-Hdv" secondAttribute="centerY" id="da3-D6-fou"/>
                             <constraint firstItem="as0-LH-qHo" firstAttribute="centerX" secondItem="emU-2u-Hdv" secondAttribute="centerX" id="nIv-RH-UwE"/>
                             <constraint firstItem="as0-LH-qHo" firstAttribute="centerY" secondItem="emU-2u-Hdv" secondAttribute="centerY" id="xmv-xl-cEy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pHe-8p-NeF"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="enD-bc-0gc" id="vOb-Bz-VZY"/>
+                        <outlet property="indicatorBackgroundView" destination="V2T-9y-YNp" id="xrW-N0-oDH"/>
+                        <outlet property="loginButton" destination="RmC-By-gnV" id="XHb-iJ-qLE"/>
+                        <outlet property="logoImageView" destination="as0-LH-qHo" id="zX8-cC-p5x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="InS-ho-fzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2848" y="-6"/>
+            <point key="canvasLocation" x="-2849.2307692307691" y="-6.3981042654028437"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="EJW-bp-52r">
