@@ -10,7 +10,6 @@ import WebKit
 
 protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewController(_ viewController: WebViewViewController, didAuthenticateWith code: String)
-    func webViewViewControllerDidCancel(_ viewController: WebViewViewController)
 }
 
 final class WebViewViewController: UIViewController {
@@ -46,7 +45,6 @@ final class WebViewViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
-        setNeedsStatusBarAppearanceUpdate()
     }
     
     // MARK: - Key Value Observer
@@ -110,12 +108,10 @@ extension WebViewViewController: WKNavigationDelegate {
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
         if let code = code(from: navigationAction) {
-            print("Authorization code recieved")
             decisionHandler(.cancel)
             delegate?.webViewViewController(self, didAuthenticateWith: code)
         } else {
             decisionHandler(.allow)
-            updateProgress()
         }
     }
     
@@ -134,15 +130,19 @@ extension WebViewViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        if(error.localizedDescription == "The Internet connection appears to be offline.")
-        {
-            print("Fail to load webView")
-            let alert = UIAlertController(title: "Ошибка подключения", message: "Проверьте ваше интернет-соединение и повторите попытку.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default) { ( _ ) in
+        if error.localizedDescription == "The Internet connection appears to be offline." {
+            print("Fail to load webView: \(error.localizedDescription)")
+            let alert = UIAlertController(
+                title: "Ошибка подключения",
+                message: "Проверьте ваше интернет-соединение и повторите попытку",
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                 self.navigationController?.popViewController(animated: true)
             }
             
-            alert.addAction(ok)
+            alert.addAction(okAction)
             self.present(alert, animated: true)
         }
     }

@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol AuthViewControllerDelegate: AnyObject {
+    func didAuthentificate(_ viewController: AuthViewController)
+}
+
 final class AuthViewController: UIViewController {
+    
+    weak var delegate: AuthViewControllerDelegate?
     
     // MARK: - Services
     
     private let oauthService = OAuth2Service.shared
-    private let oauthTokenStorage = OAuthTokenStorage.shared
+    private let oauthTokenStorage = OAuth2TokenStorage()
     
     // MARK: - StatusBar Appearance
     
@@ -25,17 +31,12 @@ final class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackwardButton()
-        
-        if let _ = oauthTokenStorage.token {
-            print("Bearer token was detected in UserDefaults")
-        } else {
-            print("Bearer token was not detected in UserDefaults")
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "WebViewSegue" {
             guard let webViewViewController = segue.destination as? WebViewViewController else {
+                print("Fail to handle segue. Expected a WebViewViewController")
                 return
             }
             
@@ -61,7 +62,7 @@ extension AuthViewController: WebViewViewControllerDelegate {
     
     func webViewViewController(_ viewController: WebViewViewController, didAuthenticateWith code: String) {
         
-        let fetchTokenCompletion: (Result<Data, Error>) -> Void = {  [weak self] result in
+        let fetchTokenCompletion: (Result<Data, Error>) -> Void = { result in
             switch result {
             case .success(let data):
                 do {
@@ -69,13 +70,26 @@ extension AuthViewController: WebViewViewControllerDelegate {
                     let token = try decoder.decode(OAuthTokenResponseBody.self, from: data).accessToken
                     
                     print("Bearer token recieved")
-                    self?.oauthTokenStorage.token = token
-                    
+                    self.oauthTokenStorage.token = token
+                    self.delegate?.didAuthentificate(self)
                 } catch {
                     print("Decoding error: \(error.localizedDescription)")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                
+                let alert = UIAlertController(
+                    title: "Что-то пошло не так(",
+                    message: "Не удалось войти в систему",
+                    preferredStyle: .alert
+                )
+                
+                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
             }
         }
         
@@ -85,7 +99,5 @@ extension AuthViewController: WebViewViewControllerDelegate {
         
         navigationController?.popViewController(animated: true)
     }
-    
-    func webViewViewControllerDidCancel(_ viewController: WebViewViewController) { }
     
 }

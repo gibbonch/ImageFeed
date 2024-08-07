@@ -1,5 +1,5 @@
 //
-//  OAuthTokenStorage.swift
+//  OAuth2TokenStorag.swift
 //  ImageFeed
 //
 //  Created by Александр Торопов on 05.08.2024.
@@ -7,11 +7,7 @@
 
 import Foundation
 
-final class OAuthTokenStorage {
-    
-    static let shared = OAuthTokenStorage()
-    
-    private init() { }
+final class OAuth2TokenStorage {
     
     var token: String? {
         get {

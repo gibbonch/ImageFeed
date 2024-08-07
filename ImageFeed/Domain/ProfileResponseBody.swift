@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Profile {
+struct ProfileResponseBody {
     let avatarImageName: String
     let name: String
     let loginName: String

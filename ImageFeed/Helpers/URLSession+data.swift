@@ -22,10 +22,10 @@ enum NetworkError: Error {
             return NSLocalizedString("URL session error occurred", comment: "NetworkError - URL session")
         }
     }
-    
 }
 
 extension URLSession {
+    
     func fetchData(for request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
         let performCompletion: (Result<Data, Error>) -> Void = { result in
             DispatchQueue.main.async {
@@ -47,7 +47,7 @@ extension URLSession {
             }
         })
         
-        
         task.resume()
     }
+    
 }
