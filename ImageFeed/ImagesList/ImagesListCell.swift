@@ -32,8 +32,8 @@ final class ImagesListCell: UITableViewCell {
         super.layoutSublayers(of: layer)
         gradientLayer.frame = gradientView.bounds
     
-        let colors = [UIColor(rgb: 0x1A1B22).withAlphaComponent(0.0),
-                      UIColor(rgb: 0x1A1B22).withAlphaComponent(0.2)]
+        let colors = [UIColor(hex: 0x1A1B22).withAlphaComponent(0.0),
+                      UIColor(hex: 0x1A1B22).withAlphaComponent(0.2)]
         let locations = [0.0, 1.0]
         
         gradientView.addGradient(with: gradientLayer, colors: colors, locations: locations)

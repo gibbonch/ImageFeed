@@ -7,7 +7,11 @@
 
 import UIKit
 
-struct MockImageLoader: ImageLoader {
+protocol ImageLoading {
+    func loadImages() -> [UIImage]
+}
+
+struct MockImageLoader: ImageLoading {
     
     private let imageNames = Array(0..<20).map{ "\($0)" }
     

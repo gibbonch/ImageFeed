@@ -18,7 +18,7 @@ final class ImagesListViewController: UIViewController {
     // MARK: - Properties
     
     private let segueIdentifier = "SingleImageSegue"
-    private var imageLoader: ImageLoader?
+    private var imageLoader: ImageLoading?
     
     private lazy var images: [UIImage] = {
         return imageLoader?.loadImages() ?? []
@@ -57,7 +57,6 @@ final class ImagesListViewController: UIViewController {
     // MARK: - Methods
     
     private func configureTableView() {
-        tableView.rowHeight = 200
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
     

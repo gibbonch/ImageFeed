@@ -9,6 +9,8 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     
+    private let storage = OAuth2TokenStorage()
+    
     // MARK: - UI Components
     
     private lazy var avatarImageView: UIImageView = {
@@ -29,7 +31,7 @@ final class ProfileViewController: UIViewController {
     private lazy var loginNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
-        label.textColor = UIColor(rgb: 0xAEAFB4)
+        label.textColor = UIColor(hex: 0xAEAFB4)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -55,7 +57,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mockModel = ProfileModel(avatarImageName: "UserAvatar",
+        let mockModel = ProfileResponseBody(avatarImageName: "UserAvatar",
                                      name: "Екатерина Новикова",
                                      loginName: "@ekaterina_nov",
                                      description: "Hello, world!")
@@ -67,7 +69,17 @@ final class ProfileViewController: UIViewController {
     
     // MARK: - Logout Action
     
-    @objc private func logoutButtonDidTap() { }
+    @objc private func logoutButtonDidTap() {
+        storage.token = nil
+        
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Invalid window configuration")
+            return
+        }
+        
+        let rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SplashViewController")
+        window.rootViewController = rootViewController
+    }
     
     // MARK: - UI Configuration Methods
     
@@ -101,7 +113,7 @@ final class ProfileViewController: UIViewController {
         ])
     }
     
-    private func configureUI(with model: ProfileModel) {
+    private func configureUI(with model: ProfileResponseBody) {
         avatarImageView.image = UIImage(named: model.avatarImageName)
         nameLabel.text = model.name
         loginNameLabel.text = model.loginName
