@@ -13,7 +13,7 @@ protocol WebViewViewControllerDelegate: AnyObject {
 }
 
 final class WebViewViewController: UIViewController {
-    
+
     // MARK: - IBOutlets
     
     @IBOutlet private weak var webView: WKWebView!
@@ -34,12 +34,16 @@ final class WebViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureWebView()
-        //navigationController?.navigationBar.isTranslucent = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Logger.debug("User has started the authentication process")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -85,6 +89,7 @@ final class WebViewViewController: UIViewController {
         ]
         
         guard let url = urlComponents?.url else {
+            Logger.error("Fail to create URL from components")
             return
         }
         
@@ -123,15 +128,18 @@ extension WebViewViewController: WKNavigationDelegate {
             let items = urlComponents.queryItems,
             let codeItem = items.first(where: { $0.name == "code" })
         else {
+            // Logging will occur each time when navigating within the web view
+            // Logger.error("Fail to parse url")
             return nil
         }
         
+        Logger.debug("Auth code was parsed")
         return codeItem.value
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         if error.localizedDescription == "The Internet connection appears to be offline." {
-            print("Fail to load webView: \(error.localizedDescription)")
+            Logger.error("Fail to load webView. \(error.localizedDescription)")
             let alert = UIAlertController(
                 title: "Ошибка подключения",
                 message: "Проверьте ваше интернет-соединение и повторите попытку",

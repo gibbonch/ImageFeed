@@ -15,7 +15,7 @@ enum NetworkError: Error {
     var localizedDescription: String {
         switch self {
         case .httpStatusCode(let code):
-            return NSLocalizedString("HTTP status code error: \(code)", comment: "NetworkError - HTTP status code")
+            return NSLocalizedString("HTTP status code error - \(code)", comment: "NetworkError - HTTP status code")
         case .urlRequestError(let error):
             return NSLocalizedString("URL request error: \(error.localizedDescription)", comment: "NetworkError - URL request")
         case .urlSessionError:

@@ -22,6 +22,7 @@
 		18982F122C3ED6D800149DEE /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F112C3ED6D800149DEE /* UIColor+hex.swift */; };
 		18982F142C3ED6E600149DEE /* UIView+addGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F132C3ED6E600149DEE /* UIView+addGradient.swift */; };
 		18982F212C44215B00149DEE /* MockImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18982F202C44215B00149DEE /* MockImageLoader.swift */; };
+		18B962F82C651DB100FB8205 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B962F72C651DB100FB8205 /* Logger.swift */; };
 		18C688FA2C63CA8400EF571B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C688F92C63CA8400EF571B /* SplashViewController.swift */; };
 		18DA3B6A2C49808300ED7D02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA3B692C49808300ED7D02 /* ProfileViewController.swift */; };
 		18DA3B6C2C4AD4D300ED7D02 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA3B6B2C4AD4D300ED7D02 /* SingleImageViewController.swift */; };
@@ -50,6 +51,7 @@
 		18982F112C3ED6D800149DEE /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		18982F132C3ED6E600149DEE /* UIView+addGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addGradient.swift"; sourceTree = "<group>"; };
 		18982F202C44215B00149DEE /* MockImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageLoader.swift; sourceTree = "<group>"; };
+		18B962F72C651DB100FB8205 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		18C688F92C63CA8400EF571B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		18DA3B692C49808300ED7D02 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18DA3B6B2C4AD4D300ED7D02 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				18DA3B682C49806600ED7D02 /* Profile */,
 				18982F1D2C44212C00149DEE /* Services */,
 				18F663E42C6125E70059D9F4 /* Domain */,
+				18B962F62C651D5500FB8205 /* Logging */,
 				18982F102C3ED6B500149DEE /* Helpers */,
 				18982F0F2C3ED66F00149DEE /* Resources */,
 			);
@@ -147,9 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				182FF53D2C57F3EF003CEB6E /* Constants.swift */,
+				18F663E22C611FEC0059D9F4 /* URLSession+data.swift */,
 				18982F112C3ED6D800149DEE /* UIColor+hex.swift */,
 				18982F132C3ED6E600149DEE /* UIView+addGradient.swift */,
-				18F663E22C611FEC0059D9F4 /* URLSession+data.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -157,10 +160,18 @@
 		18982F1D2C44212C00149DEE /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				18982F202C44215B00149DEE /* MockImageLoader.swift */,
 				18C688FB2C63E99700EF571B /* OAuth2 */,
+				18982F202C44215B00149DEE /* MockImageLoader.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		18B962F62C651D5500FB8205 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				18B962F72C651DB100FB8205 /* Logger.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		18C688F82C63CA6C00EF571B /* Splash */ = {
@@ -285,6 +296,7 @@
 				181E56BE2C5002130059103A /* ProfileResponseBody.swift in Sources */,
 				18982F0B2C3EA7E600149DEE /* ImagesListCell.swift in Sources */,
 				18982F212C44215B00149DEE /* MockImageLoader.swift in Sources */,
+				18B962F82C651DB100FB8205 /* Logger.swift in Sources */,
 				18982ED72C3D8A1000149DEE /* AppDelegate.swift in Sources */,
 				182FF53E2C57F3EF003CEB6E /* Constants.swift in Sources */,
 				18DA3B6C2C4AD4D300ED7D02 /* SingleImageViewController.swift in Sources */,

@@ -15,7 +15,7 @@ final class OAuth2Service {
     
     func fetchAuthToken(with code: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = prepareOAuthTokenRequest(with: code) else {
-            print("Fail to prepare bearer token request")
+            Logger.error("Fail to prepare bearer token request")
             return
         }
         

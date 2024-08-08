@@ -20,6 +20,10 @@ final class AuthViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet private weak var indicatorBackgroundView: UIView!
     
+    // MARK: - Segue Identifier
+    
+    private let webViewSegueIdentifier = "WebViewSegue"
+    
     // MARK: - AuthViewControllerDelegate
     
     weak var delegate: AuthViewControllerDelegate?
@@ -43,14 +47,15 @@ final class AuthViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "WebViewSegue" {
+        if segue.identifier == webViewSegueIdentifier {
             guard let webViewViewController = segue.destination as? WebViewViewController else {
-                print("Fail to handle segue. Expected a WebViewViewController")
+                Logger.error("Fail to handle segue. Expected a WebViewViewController")
                 return
             }
             
             webViewViewController.view.setNeedsLayout()
             webViewViewController.delegate = self
+
         }
     }
     
@@ -71,6 +76,14 @@ final class AuthViewController: UIViewController {
         loginButton.isEnabled = false
     }
     
+    private func hideActivityIndicator() {
+        activityIndicatorView.isHidden = true
+        indicatorBackgroundView.isHidden = true
+        logoImageView.alpha = 1.0
+        loginButton.alpha = 1.0
+        loginButton.isEnabled = true
+    }
+    
 }
 
 // MARK: - WebViewViewControllerDelegate
@@ -85,27 +98,20 @@ extension AuthViewController: WebViewViewControllerDelegate {
                     let decoder = JSONDecoder()
                     let token = try decoder.decode(OAuthTokenResponseBody.self, from: data).accessToken
                     
-                    print("Bearer token recieved")
+                    Logger.debug("Authentication token has been received")
+                    
                     self.oauthTokenStorage.token = token
                     self.delegate?.didAuthentificate(self)
                 } catch {
-                    print("Decoding error: \(error.localizedDescription)")
+                    Logger.error("\(error.localizedDescription)")
+                    self.showErrorAlert()
                 }
             case .failure(let error):
-                print(error.localizedDescription)
-                
-                let alert = UIAlertController(
-                    title: "Что-то пошло не так(",
-                    message: "Не удалось войти в систему",
-                    preferredStyle: .alert
-                )
-                
-                let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.navigationController?.popViewController(animated: true)
+                if let networkError = error as? NetworkError {
+                    Logger.error(networkError.localizedDescription)
                 }
                 
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
+                self.showErrorAlert()
             }
         }
         
@@ -114,6 +120,22 @@ extension AuthViewController: WebViewViewControllerDelegate {
         }
         showActivityIndicator()
         navigationController?.popViewController(animated: true)
+    }
+    
+    private func showErrorAlert() {
+        let alert = UIAlertController(
+            title: "Что-то пошло не так(",
+            message: "Не удалось войти в систему",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+            self.hideActivityIndicator()
+        }
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
     
 }
